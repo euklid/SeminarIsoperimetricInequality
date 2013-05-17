@@ -1,0 +1,114 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THE BEER-WARE LICENSE (Revision 42): %
+% <r@twopi.eu> schrieb diese Datei. Solange Sie diesen Vermerk nicht entfernen, %
+% können Sie mit dem Material machen, was Sie möchten. Wenn wir uns eines Tages %
+% treffen und Sie denken, das Material ist es wert, können Sie mir dafür ein Bier %
+% ausgeben. Robert Hemstedt %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8x]{inputenc}
+%\usepackage{ucs}
+\usepackage[left=2.0cm, right=2.0cm, top=2.0cm, bottom=2.0cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[ngerman]{babel}
+\usepackage{bbm}
+\usepackage{amssymb}
+\usepackage[amsthm,thmmarks]{ntheorem}
+%\usepackage{tabularx}
+\usepackage[arrow, matrix, curve]{xy}
+\usepackage{graphicx}
+% b) Lemma, Satz, Theorem usw.
+\makeatletter
+\renewtheoremstyle{plain}%
+  {\item[\hskip\labelsep \theorem@headerfont ##1\ ##2:]}%
+  {\item[\hskip\labelsep \theorem@headerfont ##1~##2~##3:]\mbox{}}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Satz}[Theorem]{Satz}
+\newtheorem{Prop}[Theorem]{Proposition}
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Korollar}[Theorem]{Korollar}
+\newtheorem{Definition}[Theorem]{Definition}
+\newtheorem*{Folgerung}[Theorem]{Folgerung}
+\newtheorem*{Behauptung}[Theorem]{Behauptung}
+\newtheorem{bez}[Theorem]{Bezeichnung}
+
+\theorembodyfont{\upshape}
+\newtheorem{Bemerkung}[Theorem]{Bemerkung}
+\newtheorem{Beispiel}[Theorem]{Beispiel}
+
+\newcommand{\herv}[1]{{\emph{\textbf{#1}}}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cupdot}{\mathbin{\dot{\cup}}}
+
+\def\presuper#1#2%
+  {\mathop{}%
+   \mathopen{\vphantom{#2}}^{#1}%
+   \kern-\scriptspace%
+   #2}
+
+\numberwithin{equation}{section}
+
+\newsavebox{\fmbox}
+\newenvironment{fmpage}[1]
+{\begin{lrbox}{\fmbox}\begin{minipage}{#1}}
+{\end{minipage}\end{lrbox}\fbox{\usebox{\fmbox}}}
+
+\linespread{1.05}
+\author{Robert Hemstedt \\ \texttt{r@twopi.eu}}
+\title{Seminarvortrag Isoperimetrische Ungleichung in der Ebene}
+\begin{document}
+\maketitle
+\section{Motivation}
+Sei $\Gamma$ eine \textbf{geschlossene Kurve} in der Ebene, ohne Selbstüberschneidung. Es bezeichne $l$ die \textbf{Länge} von $\Gamma$ und $\mathcal{A}$ die \textbf{Fläche} der beschränkten Umgebung in $\R^2$, die von $\Gamma$ umschlossen wird.\\
+\textit{Frage:} Falls existent, welche Kurve $\Gamma$ für ein festes $l$ maximiert $\mathcal{A}$?
+
+Man kann sich schnell selbst davon überzeugen, dass der Kreis dieses Problem löst.
+Wir wollen dies formal beweisen.
+
+\section{Kurven, Längen und Flächen}
+Bei der ersten Beschreibung des Problems haben wir die uns alltäglichen Begriffe \textbf{geschlossene Kurve}, \textbf{Länge} und \textbf{Fläche} verwendet, ohne sie vorher klar definiert zu haben. Das holen wir jetzt nach.
+\begin{Definition}
+Eine \herv{parametrisierte Kurve} ist eine Abbildung \[ \gamma:[a,b] \rightarrow \R^2 .\]
+$\operatorname{Im}(\gamma)$ ist eine Menge von Punkten in der Ebene, die wir als \herv{Kurve} $\Gamma$ bezeichnen.\\
+Eine Kurve heißt \herv{einfach}, wenn sie sich nicht selbst schneidet und sie heißt \herv{geschlossen}, wenn ihr Anfangs- und Endpunkt identisch sind. Also:
+\[ \Gamma \text{ einfach und geschlossen} :\Leftrightarrow \left\lbrace \begin{array}{ll}
+\gamma(s_1)=\gamma(s_2)& s_1=a, s_2=b  \\ \forall s_1\neq s_2 \in [a,b]:  \gamma(s_1)\neq \gamma(s_2) & \text{sonst} \end{array}\right. \]
+\end{Definition}
+\begin{Bemerkung}
+Wir können $\gamma$ als eine periodische Funktion auf $\R$ mit Periodenlänge $b-a$ fortsetzen und sie als Funktion auf dem Kreis betrachten.\\
+Für unsere weiteren Betrachtungen fordern wir eine gewisse Glattheit von $\gamma$ voraus, sodass wir sie als $\mathcal{C}^1$ Funktion betrachten mit $\gamma'(s)\neq 0\ \forall s$, also $\gamma$ nie konstant ist. \\
+Insgesamt garantieren uns diese Forderungen an $\gamma$, dass $\Gamma$ an jedem Punkt eine wohldefinierte Tangente hat, die sich stetig ändert, wenn der Stützpunkt auf der Kurve (stetig) wandert.
+\end{Bemerkung}
+\begin{Bemerkung}
+Die Parametrisierung von $\gamma$ induziert eine \textbf{Orientierung} auf $\Gamma$, wenn $s$ von $a$ nach $b$ geht. Weiterhin ergibt sich für jede bijektive Abbildung $s: [c,d] \rightarrow [a,b]$, $s\in \mathcal{C}^1$ eine neue Parametrisierung $\eta:[c,d] \rightarrow \R^2$ von $\Gamma$ mit \[ \eta(t) = \gamma(s(t)).\]
+Es sollte klar sein, dass $\Gamma$ geschlossen und einfach unabhängig von der gewählten Parametrisierung ist.
+\end{Bemerkung}
+\begin{Definition}
+Mit den Bezeichnungen von oben sind die zwei Parametrisierungen $\eta$ und $\gamma$ \herv{äquivalent}, wenn $s'(t)>0$ für alle t, d.h. $\eta$ und $\gamma$ induzieren die gleiche Orientierung auf $\Gamma$.\\
+Gilt jedoch $s'(t)<0$ für alle t, so kehrt $\eta$ die Orientierung um.
+\end{Definition}
+\begin{Definition}
+Wird die Kurve $\Gamma$ durch eine Funktion $\gamma(s)=(x(s),y(s))$ parametrisiert, dann ist ihre \herv{Länge} l definiert durch \[
+l:=\int_a^b{|\gamma'(s)|ds}=\int_a^b {\left((x'(s)^2+y'(s)^2)\right)^{1/2}ds}.\]
+\end{Definition}
+\begin{Satz}
+Die Länge einer Kurve $\Gamma$ ist unabhängig von deren Parametrisierung.
+\end{Satz}
+\begin{proof}
+Seien $\gamma$ und $\eta$ zwei Parametrisierung mit $\gamma(s(t))=\eta(t)$ wie oben. Dann \[ \int_a^b{\gamma'(s)|ds} = \int_c^d{|\gamma'(s(t))||s'(t)|dt} = \int_c^d{|\eta'(t)|dt} ,\] wobei wir die Kettenregel auf $\gamma$ angewandt und die Variable im Integral substituiert haben.
+\end{proof}
+Für den anvisierten Beweis wählen wir eine besondere Parametrisierung von $\Gamma$.
+\begin{Definition}
+Wir bezeichen $\gamma$ als eine \herv{Parametrisierung nach der Bogenlänge}, wenn $|\gamma'(s)=1|$ für alle s.
+\end{Definition}
+
+\end{document}
