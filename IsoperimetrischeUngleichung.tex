@@ -104,11 +104,53 @@ l:=\int_a^b{|\gamma'(s)|ds}=\int_a^b {\left((x'(s)^2+y'(s)^2)\right)^{1/2}ds}.\]
 Die Länge einer Kurve $\Gamma$ ist unabhängig von deren Parametrisierung.
 \end{Satz}
 \begin{proof}
-Seien $\gamma$ und $\eta$ zwei Parametrisierung mit $\gamma(s(t))=\eta(t)$ wie oben. Dann \[ \int_a^b{\gamma'(s)|ds} = \int_c^d{|\gamma'(s(t))||s'(t)|dt} = \int_c^d{|\eta'(t)|dt} ,\] wobei wir die Kettenregel auf $\gamma$ angewandt und die Variable im Integral substituiert haben.
+Seien $\gamma$ und $\eta$ zwei Parametrisierung mit $\gamma(s(t))=\eta(t)$ wie oben. Dann \[ \int_a^b{|\gamma'(s)|ds} = \int_c^d{|\gamma'(s(t))||s'(t)|dt} = \int_c^d{|\eta'(t)|dt} ,\] wobei wir die Kettenregel auf $\gamma$ angewandt und die Variable im Integral substituiert haben.
 \end{proof}
 Für den anvisierten Beweis wählen wir eine besondere Parametrisierung von $\Gamma$.
 \begin{Definition}
-Wir bezeichen $\gamma$ als eine \herv{Parametrisierung nach der Bogenlänge}, wenn $|\gamma'(s)=1|$ für alle s.
+Wir bezeichen $\gamma$ als eine \herv{Parametrisierung nach der Bogenlänge}, wenn $|\gamma'(s)|=1$ für alle s.
 \end{Definition}
+Das bedeutet, dass $\gamma(s)$ sich mit konstanter Geschwindigkeit bewegt und daher die Länge von $\Gamma$ genau $b-a$ ist. Nach einer eventuellen Translation lässt sich die Parametrisierung auf $[0;l]$ definieren.
+\begin{Satz}
+Jede Kurve lässt sich nach der Bogenlänge parametrisieren.
+\end{Satz}
+\begin{proof}
+O.b.d.A sei $\alpha(t):[0,b]\rightarrow \R^2$ eine Parametrisierung der Kurve $\Gamma$. Dann definiere $L(s):=\int_0^s{|\alpha'(t)|dt}$. Da $|\alpha'(t)| > 0$ für alle $t$ und $\alpha'$ stetig, ist $L$ streng monoton und damit eine Bijektion $L:[0,b]\rightarrow [0,l]$. Dann ist $\gamma(s)=\alpha(L^{-1}(s))$ eine Parametrisierung von $\Gamma$ nach der Bogenlänge. In der Tat: \[\gamma'(s)=\frac{d}{ds}\alpha(L^{-1}(s))=\alpha'({L^{-1}(s)})\cdot (L^{-1})'(s) = \alpha'(L^{-1}(s))\cdot \frac{1}{L'(L^{-1}(s))}= \frac{\alpha'(L^{-1}(s))}{|\alpha'(L^{-1}(s))|}\] und somit ist $|\gamma'(s)|=1$ für alle s.
+\end{proof}
+Wir wollen nun die Fläche der von der einfach geschlossenen Kurve $\Gamma$ umschlossenen definieren. Für unsere Betrachtungen genügt sie der folgenden Formel:
+\begin{Definition}
+Der Flächeninhalt $\mathcal{A}$ der von der Kurve $\Gamma$ umschlossenen Region lässt lässt sich wie folgt berechnen:
+\begin{align*}
+\mathcal{A}&=\frac{1}{2}\left|\int_\Gamma (x dy -y dx) \right| \\
+&= \frac{1}{2}\left|\int_a^b x(s)y'(s)-y(s)x'(s) ds \right| .
+\end{align*}
+\end{Definition}
+\section{Formulierung und Beweis der Isoperimetrischen Ungleichung}
+An dieser Stelle sind wir mit genügend Rüstzeug bewappnet, um unser Problem exakt zu formulieren und zu beweisen.
+\begin{Theorem}[Isoperimetrische Ungleichung]
+Sei $\Gamma$ eine einfache geschlossene Kurve im $\R^2$ der Länge l und sei $\mathcal{A}$ der Flächeninhalt der ihr umschlossenen Region. Dann gilt
+\[ A\leq \frac{l^2}{4\pi}, \]
+Gleichheit gilt genau dann, wenn $\Gamma$ ein Kreis ist.
+\end{Theorem}
+\begin{proof}
+Wir können unser Problem neu skalieren, indem wir die Maßeinheiten um einen Faktor $\delta>0$ verändern. Dies definiert die Abbildung $(x,y) \mapsto (\delta x, \delta y)$. Unter dieser Abbildung hat die Kurve $\Gamma$ die Länge $\delta l$ und die Fläche $\delta^2 \mathcal{A}$. Wir können somit alle Fälle auf den Fall $l=2\pi$ zurückführen und es genügt zu zeigen, dass $\mathcal{A}\leq \pi$ mit Gleichheit genau dann, wenn $\Gamma$ ein Kreis ist.
 
+Sei $\gamma:[0,2\pi]\rightarrow \R^2$ mit $\gamma(s)=(x(s),y(s))$ eine Parametrisierung nach der Bogenlänge der Kurve $\Gamma$, also $x'(s)^2+y'(s)^2=1$ für alle $s\in [0,2\pi]$. Dann \begin{align}\label{paramlaenge}
+\frac{1}{2\pi} \int_0^{2\pi} {\left(x'(s)^2+y'(s)^2\right) ds} = 1.
+\end{align} 
+Da die Kurve geschlossen und die Funktionen $x(s)$ und $y(s)$ $2\pi$-periodisch ist, betrachten wir ihre Fourierreihen \[x(s)\sim \sum a_ne^{ins} \text{ und } y(s)\sim \sum b_ne^{ins}. \]  Weiter mit $\hat{f'}(n)=i n\hat{f}(n)$ haben wir \[x'(s)\sim \sum  a_n i n e^{ins} \text{ und } y'(s)\sim \sum b_n i n e^{ins}. \] Die Parsevalsche Identität angewandt auf \eqref{paramlaenge} gibt \begin{align} \label{parseval1}
+\sum_{n=-\infty}^\infty |n|^2(|a_n|^2+|b_n|^2)=1.
+\end{align}
+Mit der Bilinearform der Parsevalschen Identität angewandt auf das Integral für den Flächen\-in\-halt erhalten wir mit $a_n=\overline{a_{-n}}$ und $b_n=\overline{b_{-n}}$, da $x(s)$ und $y(s)$ reellwertig sind:
+\[\mathcal{A}=\frac{1}{2} \left|\int_0^{2\pi} {x(s)y'(s)-y(s)x'(s)ds}\right|=\pi\left|\sum_{n=-\infty}^\infty {n\left(a_n\overline{b_n}-b_n\overline{a_n}\right) } \right|. \] 
+Ferner ist \begin{align} \label{abschaetz}
+|a_n\overline{b_n} -b_n\overline{a_n}|\leq |a_n\overline{b_n}|+|\overline{a_n}b_n|=2|a_n||b_n|\leq |a_n|^2+|b_n|^2
+\end{align}
+Mit $|n|\leq |n|^2$ und \eqref{parseval1} zusammen ergeben \begin{align*}
+\mathcal{A}&\leq \pi \sum_{n=-\infty}^{\infty}{|n|^2(|a_n|^2+|b_n|^2)} \\
+&\leq \pi
+\end{align*}
+Wenn $\mathcal{A}=\pi$, dann muss $x(s)=a_{-1}e^{-is}+a_0+a_1e^{is}$ und $y(s)=b_{-1}e^{-is}+b_0+b_1e^{is}$, da $|n|<|n|^2,$ sobald $|n|\geq 2$. Da $x(s)$ und $y(s)$ reellwertig sind, muss $a_{-1}=\overline{a_1}$ und $b_{-1}=\overline{b_1}$. Aus \eqref{parseval1} ist $2(|a_1|^2+|b_1|^2)=1$ und wegen Gleichheit in \eqref{abschaetz} ist $|a_1|=|b_1|=1/2.$ Demnach $a_1=\frac{1}{2}e^{i\alpha}$ und $b_1=\frac{1}{2}e^{i\beta}$. Weiter ist $1=2|a_1\overline{b_1}-\overline{a_1}b_1|=2|\frac{e^{i(\alpha-\beta)}}{4}-\frac{e^{i(\beta-\alpha)}}{4}|=|\sin(\alpha - \beta)$ und somit $\alpha-\beta=(2k+1)\pi/2, k\in \Z$. Damit finden wir
+\[ x(s)=a_0+\cos(\alpha+s) \text{ und } y(s)=b_0 \pm\sin(\alpha +s),\] wobei das Vorzeichen in $y(s)$ von der Parität von $k$ abhängt. Auf jeden Fall sehen, wir dass $\Gamma$ ein Kreis ist, für den die Gleichheit offensichtlich gilt und damit ist die Aussage bewiesen.
+\end{proof}
 \end{document}
