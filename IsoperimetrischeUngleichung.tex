@@ -150,7 +150,14 @@ Mit $|n|\leq |n|^2$ und \eqref{parseval1} zusammen ergeben \begin{align*}
 \mathcal{A}&\leq \pi \sum_{n=-\infty}^{\infty}{|n|^2(|a_n|^2+|b_n|^2)} \\
 &\leq \pi
 \end{align*}
-Wenn $\mathcal{A}=\pi$, dann muss $x(s)=a_{-1}e^{-is}+a_0+a_1e^{is}$ und $y(s)=b_{-1}e^{-is}+b_0+b_1e^{is}$, da $|n|<|n|^2,$ sobald $|n|\geq 2$. Da $x(s)$ und $y(s)$ reellwertig sind, muss $a_{-1}=\overline{a_1}$ und $b_{-1}=\overline{b_1}$. Aus \eqref{parseval1} ist $2(|a_1|^2+|b_1|^2)=1$ und wegen Gleichheit in \eqref{abschaetz} ist $|a_1|=|b_1|=1/2.$ Demnach $a_1=\frac{1}{2}e^{i\alpha}$ und $b_1=\frac{1}{2}e^{i\beta}$. Weiter ist $1=2|a_1\overline{b_1}-\overline{a_1}b_1|=2|\frac{e^{i(\alpha-\beta)}}{4}-\frac{e^{i(\beta-\alpha)}}{4}|=|\sin(\alpha - \beta)$ und somit $\alpha-\beta=(2k+1)\pi/2, k\in \Z$. Damit finden wir
+Wenn $\mathcal{A}=\pi$, dann muss $x(s)=a_{-1}e^{-is}+a_0+a_1e^{is}$ und $y(s)=b_{-1}e^{-is}+b_0+b_1e^{is}$, da $|n|<|n|^2,$ sobald $|n|\geq 2$. Da $x(s)$ und $y(s)$ reellwertig sind, muss $a_{-1}=\overline{a_1}$ und $b_{-1}=\overline{b_1}$. Aus \eqref{parseval1} ist $2(|a_1|^2+|b_1|^2)=1$ und wegen Gleichheit in \eqref{abschaetz} ist $|a_1|=|b_1|=1/2.$ Demnach $a_1=\frac{1}{2}e^{i\alpha}$ und $b_1=\frac{1}{2}e^{i\beta}$. Weiter ist $1=2|a_1\overline{b_1}-\overline{a_1}b_1|=2\left|\frac{e^{i(\alpha-\beta)}}{4}-\frac{e^{i(\beta-\alpha)}}{4}\right|=|\sin(\alpha - \beta)|$ und somit $\alpha-\beta=(2k+1)\pi/2, k\in \Z$. Damit finden wir
 \[ x(s)=a_0+\cos(\alpha+s) \text{ und } y(s)=b_0 \pm\sin(\alpha +s),\] wobei das Vorzeichen in $y(s)$ von der Parität von $k$ abhängt. Auf jeden Fall sehen, wir dass $\Gamma$ ein Kreis ist, für den die Gleichheit offensichtlich gilt und damit ist die Aussage bewiesen.
 \end{proof}
+\section{Diskussion}
+Wir bemerken:
+\begin{enumerate}
+\item Wir haben vorausgesetzt, dass $\Gamma$ eine einfache, geschlossene Kurve ist und an jeder Stelle differentierbar. Tatsächlich funktioniert der Beweis, so wie er formuliert ist auch wenn $\Gamma$ nicht einfach, aber geschlossen und an jeder Stelle differenzierbar ist.
+\item Es gibt einen Beweis von T. Bonnesen, der die isoperimetrische Ungleichung auf elementargeometrische Weise löst. Dabei wird vorausgesetzt, dass $\Gamma$ ein konvexes Polygon ist. Dabei wird benutzt, dass ein konkaves Polygon mit den gleichen Seitenlängen, jedoch sind einige Seiten \glqq nach innen geklappt\grqq, sodass die Gleichung, wenn sie für das konvexe Polygon gelten sollte auch auf jeden Fall für die konkaven Varianten gilt, da diese einen kleineren Flächeninhalt haben.
+\item Wir haben für die Flächeninhaltsberechnung unsere Formel vorausgesetzt, ohne zu klären, ob es noch andere Möglichkeiten gibt, den Flächeninhalt zu definieren.
+\end{enumerate}
 \end{document}
