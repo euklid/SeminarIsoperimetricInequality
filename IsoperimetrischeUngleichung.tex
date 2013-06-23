@@ -90,7 +90,7 @@ Insgesamt garantieren uns diese Forderungen an $\gamma$, dass $\Gamma$ an jedem 
 \end{Bemerkung}
 \begin{Bemerkung}
 Die Parametrisierung von $\gamma$ induziert eine \textbf{Orientierung} auf $\Gamma$, wenn $s$ von $a$ nach $b$ geht. Weiterhin ergibt sich für jede bijektive Abbildung $s: [c,d] \rightarrow [a,b]$, $s\in \mathcal{C}^1$ eine neue Parametrisierung $\eta:[c,d] \rightarrow \R^2$ von $\Gamma$ mit \[ \eta(t) = \gamma(s(t)).\]
-Es sollte klar sein, dass $\Gamma$ geschlossen und einfach unabhängig von der gewählten Parametrisierung ist.
+Es sollte klar sein, dass $\Gamma$ unabhängig von der gewählten Parametrisierung  geschlossen und einfach ist.
 \end{Bemerkung}
 \begin{Definition}
 Mit den Bezeichnungen von oben sind die zwei Parametrisierungen $\eta$ und $\gamma$ \herv{äquivalent}, wenn $s'(t)>0$ für alle t, d.h. $\eta$ und $\gamma$ induzieren die gleiche Orientierung auf $\Gamma$.\\
@@ -112,19 +112,33 @@ Wir bezeichen $\gamma$ als eine \herv{Parametrisierung nach der Bogenlänge}, we
 \end{Definition}
 Das bedeutet, dass $\gamma(s)$ sich mit konstanter Geschwindigkeit bewegt und daher die Länge von $\Gamma$ genau $b-a$ ist. Nach einer eventuellen Translation lässt sich die Parametrisierung auf $[0;l]$ definieren.
 \begin{Satz}
-Jede Kurve lässt sich nach der Bogenlänge parametrisieren.
+Jede Kurve mit den bisherigen Voraussetzungen ($\gamma\in\mathcal{C}^1, \gamma'(s)\neq 0 \forall s$) lässt sich nach der Bogenlänge parametrisieren.
 \end{Satz}
 \begin{proof}
 O.b.d.A sei $\alpha(t):[0,b]\rightarrow \R^2$ eine Parametrisierung der Kurve $\Gamma$. Dann definiere $L(s):=\int_0^s{|\alpha'(t)|dt}$. Da $|\alpha'(t)| > 0$ für alle $t$ und $\alpha'$ stetig, ist $L$ streng monoton und damit eine Bijektion $L:[0,b]\rightarrow [0,l]$. Dann ist $\gamma(s)=\alpha(L^{-1}(s))$ eine Parametrisierung von $\Gamma$ nach der Bogenlänge. In der Tat: \[\gamma'(s)=\frac{d}{ds}\alpha(L^{-1}(s))=\alpha'({L^{-1}(s)})\cdot (L^{-1})'(s) = \alpha'(L^{-1}(s))\cdot \frac{1}{L'(L^{-1}(s))}= \frac{\alpha'(L^{-1}(s))}{|\alpha'(L^{-1}(s))|}\] und somit ist $|\gamma'(s)|=1$ für alle s.
 \end{proof}
 Wir wollen nun die Fläche der von der einfach geschlossenen Kurve $\Gamma$ umschlossenen definieren. Für unsere Betrachtungen genügt sie der folgenden Formel:
 \begin{Definition}
-Der Flächeninhalt $\mathcal{A}$ der von der Kurve $\Gamma$ umschlossenen Region lässt lässt sich wie folgt berechnen:
+Der Flächeninhalt $\mathcal{A}$ der von der Kurve $\Gamma$ umschlossenen Region lässt sich wie folgt berechnen:
 \begin{align*}
 \mathcal{A}&=\frac{1}{2}\left|\int_\Gamma (x dy -y dx) \right| \\
 &= \frac{1}{2}\left|\int_a^b x(s)y'(s)-y(s)x'(s) ds \right| .
 \end{align*}
 \end{Definition}
+\begin{Bemerkung}
+Für einen einfacheren Fall lässt sich folgende Gleichung herleiten: \[
+\mathcal{A}=\left|-\int_\Gamma{y dx}\right|=\int_0^1{f(x)dx} - \int_0^1{g(x)dx}, \] wobei eine Gerade existiert, die $\Gamma$ in zwei $\mathcal{C}^1$-Funktionen $f,g: [0,1]\rightarrow \R$ über dieser Geraden als $x$-Achse zerfallen lässt, wobei $f(x)\geq g(x)$. Wenn der umschlossene Bereich $\Omega=\{(x,y):0\leq x\leq 1, g(x)\leq y\leq f(x)\}$ stets \glqq links\grqq von $\Gamma$ liegt, können die Betragsstriche entfallen.
+\end{Bemerkung}
+\begin{proof}
+O.B.d.A sei $\gamma:[0,2] \rightarrow \R^2, s\mapsto \left\lbrace \begin{array}{ll}\left( \begin{array}{c} s \\ g(s) \end{array}\right)& 0\leq s\leq 1\\
+\left(\begin{array}{c} 2-s \\ f(2-s)\end{array}\right) & 1\leq s \leq 2 \end{array}\right.$.\\ Es ist leicht nachgerechnet, dass dies eine wohldefinierte Parametrisierung von $\Gamma$ ist, wobei $\gamma\in\mathcal{C}^1$ und $\gamma'(s)\neq 0 \forall s$ und $\Omega$ liegt immer \glqq linksseitig \grqq. Es folgt:
+\begin{align*}
+-\int_\Gamma {ydx}&=-\left(\int_0^1{g(x(s))\cdot x'(s)ds} + \int_1^2{f(x(s))\cdot x'(s)ds } \right) \text{ mit } x(s)=\left\lbrace\begin{array}{ll} s & 0\leq s\leq 1 \\ 2-s & 1\leq s \leq 2 \end{array}\right.\\
+&= -\left(\int_0^1{g(x)dx} + \int_1^0{f(x)dx}\right) = -\left(\int_0^1{g(x)dx} - \int_0^1{f(x)dx}\right)\\
+&=\int_0^1{f(x)dx} - \int_0^1{g(x)dx}
+\end{align*}
+Wird $\gamma(s)$ mit entgegengesetzter Orientierung definiert, also erst $\operatorname{Im}(f(x))$ und dann $\operatorname{Im}(g(x))$ durchlaufen, müssen Betragsstriche gesetzt werden.
+\end{proof}
 \section{Formulierung und Beweis der Isoperimetrischen Ungleichung}
 An dieser Stelle sind wir mit genügend Rüstzeug bewappnet, um unser Problem exakt zu formulieren und zu beweisen.
 \begin{Theorem}[Isoperimetrische Ungleichung]
@@ -138,7 +152,7 @@ Wir können unser Problem neu skalieren, indem wir die Maßeinheiten um einen Fa
 Sei $\gamma:[0,2\pi]\rightarrow \R^2$ mit $\gamma(s)=(x(s),y(s))$ eine Parametrisierung nach der Bogenlänge der Kurve $\Gamma$, also $x'(s)^2+y'(s)^2=1$ für alle $s\in [0,2\pi]$. Dann \begin{align}\label{paramlaenge}
 \frac{1}{2\pi} \int_0^{2\pi} {\left(x'(s)^2+y'(s)^2\right) ds} = 1.
 \end{align} 
-Da die Kurve geschlossen und die Funktionen $x(s)$ und $y(s)$ $2\pi$-periodisch ist, betrachten wir ihre Fourierreihen \[x(s)\sim \sum a_ne^{ins} \text{ und } y(s)\sim \sum b_ne^{ins}. \]  Weiter mit $\hat{f'}(n)=i n\hat{f}(n)$ haben wir \[x'(s)\sim \sum  a_n i n e^{ins} \text{ und } y'(s)\sim \sum b_n i n e^{ins}. \] Die Parsevalsche Identität angewandt auf \eqref{paramlaenge} gibt \begin{align} \label{parseval1}
+Da die Kurve geschlossen und die Funktionen $x(s)$ und $y(s)$ $2\pi$-periodisch ist, betrachten wir ihre Fourierreihen \[x(s)\sim \sum a_ne^{ins} \text{ und } y(s)\sim \sum b_ne^{ins}. \]  Weiter mit $\hat{f'}(n)=i n\hat{f}(n)$ haben wir \[x'(s)\sim \sum  a_n i n e^{ins} \text{ und } y'(s)\sim \sum b_n i n e^{ins}. \] Die Parsevalsche Identität ($\frac{1}{2\pi}\int_0^{2\pi}|f(\theta)|^2d\theta = \sum_{n=-\infty}^\infty |a_n|^2$) angewandt auf \eqref{paramlaenge} gibt \begin{align} \label{parseval1}
 \sum_{n=-\infty}^\infty |n|^2(|a_n|^2+|b_n|^2)=1.
 \end{align}
 Mit der Bilinearform der Parsevalschen Identität angewandt auf das Integral für den Flächen\-in\-halt erhalten wir mit $a_n=\overline{a_{-n}}$ und $b_n=\overline{b_{-n}}$, da $x(s)$ und $y(s)$ reellwertig sind:
@@ -156,8 +170,10 @@ Wenn $\mathcal{A}=\pi$, dann muss $x(s)=a_{-1}e^{-is}+a_0+a_1e^{is}$ und $y(s)=b
 \section{Diskussion}
 Wir bemerken:
 \begin{enumerate}
-\item Wir haben vorausgesetzt, dass $\Gamma$ eine einfache, geschlossene Kurve ist und an jeder Stelle differentierbar. Tatsächlich funktioniert der Beweis, so wie er formuliert ist auch wenn $\Gamma$ nicht einfach, aber geschlossen und an jeder Stelle differenzierbar ist.
-\item Es gibt einen Beweis von T. Bonnesen, der die isoperimetrische Ungleichung auf elementargeometrische Weise löst. Dabei wird vorausgesetzt, dass $\Gamma$ ein konvexes Polygon ist. Dabei wird benutzt, dass ein konkaves Polygon mit den gleichen Seitenlängen, jedoch sind einige Seiten \glqq nach innen geklappt\grqq, sodass die Gleichung, wenn sie für das konvexe Polygon gelten sollte auch auf jeden Fall für die konkaven Varianten gilt, da diese einen kleineren Flächeninhalt haben.
+\item Wir haben vorausgesetzt, dass $\Gamma$ eine einfache, geschlossene Kurve ist und an jeder Stelle differenzierbar. Tatsächlich funktioniert der Beweis, so wie er formuliert ist auch wenn $\Gamma$ nicht einfach, aber geschlossen und an jeder Stelle differenzierbar ist.
+\item Es gibt einen Beweis von T. Bonnesen, der die isoperimetrische Ungleichung auf elementargeometrische Weise löst. Dabei wird vorausgesetzt, dass $\Gamma$ ein konvexes Polygon ist. Man sieht leicht ein, dass die Gleichung, wenn sie für das konvexe Polygon gelten sollte auch auf jeden Fall für die konkaven Varianten gilt, da diese einen kleineren Flächeninhalt haben, da beim konkaven Polygon mit den gleichen Seitenlängen, einige Seiten \glqq nach innen geklappt\grqq\ sind.
 \item Wir haben für die Flächeninhaltsberechnung unsere Formel vorausgesetzt, ohne zu klären, ob es noch andere Möglichkeiten gibt, den Flächeninhalt zu definieren.
 \end{enumerate}
+\section{Übungsaufgabe}
+
 \end{document}
