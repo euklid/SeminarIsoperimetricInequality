@@ -80,7 +80,7 @@ Siehst und die wachsende Burg des neuen Karthago, erwarben \\
 Sie den Boden, der Byrsa nach diesem Handel geheißen,\\
 \emph{So viel mit einer Stierhaut sie einzuschließen vermochte.}\footnote{Vergil: Äneis. Deutsch von Thassilo von Scheffer. Carl Schünemann Verlag Bremen, 1958}
 \end{quote}
-Genug des Geschichtlichen, beschäftigen wir uns fortan mit der Mathematik des Problems.
+Genug des Sagenhaften, beschäftigen wir uns fortan mit der Mathematik des Problems.
 
 \section{Kurven, Längen und Flächen}
 Bei der ersten Beschreibung des Problems haben wir die uns alltäglichen Begriffe \textbf{geschlossene Kurve}, \textbf{Länge} und \textbf{Fläche} verwendet, ohne sie vorher klar definiert zu haben. Das holen wir jetzt nach.
@@ -97,11 +97,11 @@ Für unsere weiteren Betrachtungen fordern wir eine gewisse Glattheit von $\gamm
 Insgesamt garantieren uns diese Forderungen an $\gamma$, dass $\Gamma$ an jedem Punkt eine wohldefinierte Tangente hat, die sich stetig ändert, wenn der Stützpunkt auf der Kurve (stetig) wandert.
 \end{Bemerkung}
 \begin{Bemerkung}
-Die Parametrisierung von $\gamma$ induziert eine \textbf{Orientierung} auf $\Gamma$, wenn $s$ von $a$ nach $b$ geht. Weiterhin ergibt sich für jede bijektive Abbildung $s: [c,d] \rightarrow [a,b]$, $s\in \mathcal{C}^1$ eine neue Parametrisierung $\eta:[c,d] \rightarrow \R^2$ von $\Gamma$ mit \[ \eta(t) = \gamma(s(t)).\]
+Die Parametrisierung von $\gamma$ induziert eine \textbf{Orientierung} auf $\Gamma$(, wenn $s$ von $a$ nach $b$ geht). Weiterhin ergibt sich für jede bijektive Abbildung $s: [c,d] \rightarrow [a,b]$, $s\in \mathcal{C}^1$ eine neue Parametrisierung $\eta:[c,d] \rightarrow \R^2$ von $\Gamma$ mit \[ \eta(t) = \gamma(s(t)).\]
 Es sollte klar sein, dass $\Gamma$ unabhängig von der gewählten Parametrisierung  geschlossen und einfach ist.
 \end{Bemerkung}
 \begin{Definition}
-Mit den Bezeichnungen von oben sind die zwei Parametrisierungen $\eta$ und $\gamma$ \herv{äquivalent}, wenn $s'(t)>0$ für alle t, d.h. $\eta$ und $\gamma$ induzieren die gleiche Orientierung auf $\Gamma$.\\
+Mit den bisherigen Bezeichnungen sind die zwei Parametrisierungen $\eta$ und $\gamma$ \herv{äquivalent}, wenn $s'(t)>0$ für alle t, d.h. $\eta$ und $\gamma$ induzieren die gleiche Orientierung auf $\Gamma$.\\
 Gilt jedoch $s'(t)<0$ für alle t, so kehrt $\eta$ die Orientierung um.
 \end{Definition}
 \begin{Definition}
@@ -123,34 +123,52 @@ Das bedeutet, dass $\gamma(s)$ sich mit konstanter Geschwindigkeit bewegt und da
 Jede Kurve mit den bisherigen Voraussetzungen ($\gamma\in\mathcal{C}^1, \gamma'(s)\neq 0 \forall s$) lässt sich nach der Bogenlänge parametrisieren.
 \end{Satz}
 \begin{proof}
-O.b.d.A sei $\alpha(t):[0,b]\rightarrow \R^2$ eine Parametrisierung der Kurve $\Gamma$. Dann definiere $L(s):=\int_0^s{|\alpha'(t)|dt}$. Da $|\alpha'(t)| > 0$ für alle $t$ und $\alpha'$ stetig, ist $L$ streng monoton und damit eine Bijektion $L:[0,b]\rightarrow [0,l]$. Dann ist $\gamma(s)=\alpha(L^{-1}(s))$ eine Parametrisierung von $\Gamma$ nach der Bogenlänge. In der Tat: \[\gamma'(s)=\frac{d}{ds}\alpha(L^{-1}(s))=\alpha'({L^{-1}(s)})\cdot (L^{-1})'(s) = \alpha'(L^{-1}(s))\cdot \frac{1}{L'(L^{-1}(s))}= \frac{\alpha'(L^{-1}(s))}{|\alpha'(L^{-1}(s))|}\] und somit ist $|\gamma'(s)|=1$ für alle s.
+O.b.d.A sei $\alpha(t):[0,b]\rightarrow \R^2$ eine Parametrisierung der Kurve $\Gamma$. Dann definiere $L(s):=\int_0^s{|\alpha'(t)|dt}$. Da $|\alpha'(t)| > 0$ für alle $t$ und $\alpha'$ stetig, ist $L$ streng monoton und stetig und damit eine Bijektion $L:[0,b]\rightarrow [0,l]$. Dann ist $\gamma(s):=\alpha(L^{-1}(s))$ eine Parametrisierung von $\Gamma$ nach der Bogenlänge. In der Tat: \[\gamma'(s)=\frac{d}{ds}\alpha(L^{-1}(s))=\alpha'({L^{-1}(s)})\cdot (L^{-1})'(s) = \alpha'(L^{-1}(s))\cdot \frac{1}{L'(L^{-1}(s))}= \frac{\alpha'(L^{-1}(s))}{|\alpha'(L^{-1}(s))|}\] und somit ist $|\gamma'(s)|=1$ für alle s.
 \end{proof}
-Wir wollen nun die Fläche der von der einfach geschlossenen Kurve $\Gamma$ umschlossenen definieren. Für unsere Betrachtungen genügt sie der folgenden Formel:
+Wir wollen nun die Fläche des von der einfach geschlossenen Kurve $\Gamma$ umschlossenen Region definieren. Für unsere Betrachtungen genügt sie der folgenden Formel:
 \begin{Definition}
 Der Flächeninhalt $\mathcal{A}$ der von der Kurve $\Gamma$ umschlossenen Region lässt sich wie folgt berechnen:
 \begin{align*}
 \mathcal{A}&=\frac{1}{2}\left|\int_\Gamma (x dy -y dx) \right| \\
-&= \frac{1}{2}\left|\int_a^b x(s)y'(s)-y(s)x'(s) ds \right| .
+&= \frac{1}{2}\left|\int_a^b (x(s)y'(s)-y(s)x'(s)) ds \right| .
 \end{align*}
 \end{Definition}
+%\begin{Bemerkung}
+%Für einen einfacheren Fall lässt sich folgende Gleichung herleiten: \[
+%\mathcal{A}=\left|-\int_\Gamma{y dx}\right|=\int_0^1{f(x)dx} - \int_0^1{g(x)dx}, \] wobei eine Gerade existiert, die $\Gamma$ in zwei $\mathcal{C}^1$-Funktionen $f,g: [0,1]\rightarrow \R$ über dieser Geraden als $x$-Achse zerfallen lässt, wobei $f(x)\geq g(x)$. Wenn der umschlossene Bereich $\Omega=\{(x,y):0\leq x\leq 1, g(x)\leq y\leq f(x)\}$ stets \glqq links\grqq von $\Gamma$ liegt, können die Betragsstriche entfallen.
+%\end{Bemerkung}
+%\begin{proof}
+%O.B.d.A sei $\gamma:[0,2] \rightarrow \R^2, s\mapsto \left\lbrace \begin{array}{ll}\left( \begin{array}{c} s \\ g(s) \end{array}\right)& 0\leq s\leq 1\\
+%\left(\begin{array}{c} 2-s \\ f(2-s)\end{array}\right) & 1\leq s \leq 2 \end{array}\right.$.\\ Es ist leicht nachgerechnet, dass dies eine wohldefinierte Parametrisierung von $\Gamma$ ist, wobei $\gamma\in\mathcal{C}^1$ und $\gamma'(s)\neq 0 \forall s$ und $\Omega$ liegt immer \glqq linksseitig \grqq. Es folgt:
+%\begin{align*}
+%-\int_\Gamma {ydx}&=-\left(\int_0^1{g(x(s))\cdot x'(s)ds} + \int_1^2{f(x(s))\cdot x'(s)ds } \right) \text{ mit } x(s)=\left\lbrace\begin{array}{ll} s & 0\leq s\leq 1 \\ 2-s & 1\leq s \leq 2 \end{array}\right.\\
+%&= -\left(\int_0^1{g(x)dx} + \int_1^0{f(x)dx}\right) = -\left(\int_0^1{g(x)dx} - \int_0^1{f(x)dx}\right)\\
+%&=\int_0^1{f(x)dx} - \int_0^1{g(x)dx}
+%\end{align*}
+%Wird $\gamma(s)$ mit entgegengesetzter Orientierung definiert, also erst $\operatorname{Im}(f(x))$ und dann $\operatorname{Im}(g(x))$ durchlaufen, müssen Betragsstriche gesetzt werden.
+%\end{proof}
+Für einen spezielleren Fall, können wir die Formel für den Flächeninhalt zeigen, sodass sie nicht einfach \glqq vom Himmel fällt\grqq :
 \begin{Bemerkung}
-Für einen einfacheren Fall lässt sich folgende Gleichung herleiten: \[
-\mathcal{A}=\left|-\int_\Gamma{y dx}\right|=\int_0^1{f(x)dx} - \int_0^1{g(x)dx}, \] wobei eine Gerade existiert, die $\Gamma$ in zwei $\mathcal{C}^1$-Funktionen $f,g: [0,1]\rightarrow \R$ über dieser Geraden als $x$-Achse zerfallen lässt, wobei $f(x)\geq g(x)$. Wenn der umschlossene Bereich $\Omega=\{(x,y):0\leq x\leq 1, g(x)\leq y\leq f(x)\}$ stets \glqq links\grqq von $\Gamma$ liegt, können die Betragsstriche entfallen.
-\end{Bemerkung}
-\begin{proof}
-O.B.d.A sei $\gamma:[0,2] \rightarrow \R^2, s\mapsto \left\lbrace \begin{array}{ll}\left( \begin{array}{c} s \\ g(s) \end{array}\right)& 0\leq s\leq 1\\
-\left(\begin{array}{c} 2-s \\ f(2-s)\end{array}\right) & 1\leq s \leq 2 \end{array}\right.$.\\ Es ist leicht nachgerechnet, dass dies eine wohldefinierte Parametrisierung von $\Gamma$ ist, wobei $\gamma\in\mathcal{C}^1$ und $\gamma'(s)\neq 0 \forall s$ und $\Omega$ liegt immer \glqq linksseitig \grqq. Es folgt:
-\begin{align*}
--\int_\Gamma {ydx}&=-\left(\int_0^1{g(x(s))\cdot x'(s)ds} + \int_1^2{f(x(s))\cdot x'(s)ds } \right) \text{ mit } x(s)=\left\lbrace\begin{array}{ll} s & 0\leq s\leq 1 \\ 2-s & 1\leq s \leq 2 \end{array}\right.\\
-&= -\left(\int_0^1{g(x)dx} + \int_1^0{f(x)dx}\right) = -\left(\int_0^1{g(x)dx} - \int_0^1{f(x)dx}\right)\\
-&=\int_0^1{f(x)dx} - \int_0^1{g(x)dx}
+Sei $\Gamma=\operatorname{Im}(\gamma_1+\gamma_2+\gamma_3+\gamma_4)$ eine aus $\mathcal{C}^1$-Kurven berandete Kurve, die sich mithilfe zweier $\mathcal{C}^1$-Funktionen $f,g:[0,1]\rightarrow \R^2$ parametrisieren lassen:\begin{align*}
+\gamma_1(s) &= (s, f(s)), s\in [0,1],  &\gamma_2(s)&= (1,f(1)-s), s\in [0,f(1)-g(1)] \\
+\gamma_2(s) &= (1-s,g(1-s)), s\in [0,1], & \gamma_4(s)&= (0,g(1)+s), s\in [0,f(0)-g(0)].
 \end{align*}
-Wird $\gamma(s)$ mit entgegengesetzter Orientierung definiert, also erst $\operatorname{Im}(f(x))$ und dann $\operatorname{Im}(g(x))$ durchlaufen, müssen Betragsstriche gesetzt werden.
+Dann ist \[
+\mathcal{A}=\int_0^1 f(x)dx - \int_0^1 g(x) dx=\frac{1}{2}\left|\int_\Gamma (x dy - y dx ) \right|.
+\]
+\begin{proof}
+\begin{align*}
+\int_\Gamma (x dy - y dx ) &= \int_0^1 (s\cdot f'(s) - f(s) ) ds + \int_{g(1)}^{f(1)} -1 ds + \int_0^1 (-(1-s)g'(1-s)+g(1-s))ds\\
+&=f(1)-\int_0^1 f(s) ds - \int_0^1 f(s) ds + \int_{g(1)}^{f(1)} -1 ds+ \int_0^1 (g(s)-s g'(s))ds \\
+&=f(1)-2\int_0^1 f(s) ds -f(1)+g(1)+\int_0^1 g(s) ds -g(1) + \int_0^1 g(s) ds\\
+\left| \int_\Gamma (x dy - y dx )\right| = 2\mathcal{A}
+\end{align*}
 \end{proof}
+\end{Bemerkung}
 \section{Formulierung und Beweis der Isoperimetrischen Ungleichung}
 An dieser Stelle sind wir mit genügend Rüstzeug bewappnet, um unser Problem exakt zu formulieren und zu beweisen.
 \begin{Theorem}[Isoperimetrische Ungleichung]
-Sei $\Gamma$ eine einfache geschlossene Kurve im $\R^2$ der Länge l und sei $\mathcal{A}$ der Flächeninhalt der ihr umschlossenen Region. Dann gilt
+Sei $\Gamma$ eine einfache geschlossene Kurve im $\R^2$ der Länge l und sei $\mathcal{A}$ der Flächeninhalt der von ihr umschlossenen Region. Dann gilt
 \[ A\leq \frac{l^2}{4\pi}, \]
 Gleichheit gilt genau dann, wenn $\Gamma$ ein Kreis ist.
 \end{Theorem}
@@ -179,9 +197,20 @@ Wenn $\mathcal{A}=\pi$, dann muss $x(s)=a_{-1}e^{-is}+a_0+a_1e^{is}$ und $y(s)=b
 Wir bemerken:
 \begin{enumerate}
 \item Wir haben vorausgesetzt, dass $\Gamma$ eine einfache, geschlossene Kurve ist und an jeder Stelle differenzierbar. Tatsächlich funktioniert der Beweis, so wie er formuliert ist auch wenn $\Gamma$ nicht einfach, aber geschlossen und an jeder Stelle differenzierbar ist.
-\item Es gibt einen Beweis von T. Bonnesen, der die isoperimetrische Ungleichung auf elementargeometrische Weise löst. Dabei wird vorausgesetzt, dass $\Gamma$ ein konvexes Polygon ist. Man sieht leicht ein, dass die Gleichung, wenn sie für das konvexe Polygon gelten sollte auch auf jeden Fall für die konkaven Varianten gilt, da diese einen kleineren Flächeninhalt haben, da beim konkaven Polygon mit den gleichen Seitenlängen, einige Seiten \glqq nach innen geklappt\grqq\ sind.
+\item Es gibt einen Beweis von T. Bonnesen, der die isoperimetrische Ungleichung auf elementargeometrische Weise löst. Dabei wird vorausgesetzt, dass $\Gamma$ ein konvexes Polygon ist. Man sieht leicht ein, dass die Gleichung, wenn sie für das konvexe Polygon gelten sollte, auch auf jeden Fall für die konkaven Varianten gilt, da diese einen kleineren Flächeninhalt haben, da beim konkaven Polygon mit den gleichen Seitenlängen, einige Seiten \glqq nach innen geklappt\grqq\ sind.
 \item Wir haben für die Flächeninhaltsberechnung unsere Formel vorausgesetzt, ohne zu klären, ob es noch andere Möglichkeiten gibt, den Flächeninhalt zu definieren.
 \end{enumerate}
 \section{Übungsaufgabe}
-
+Sei $\gamma:[a,b]\rightarrow \R^2, \gamma(t)=(x(t),y(t))$ eine Parametrisierung einer geschlossenen Kurve $\Gamma$. 
+\begin{enumerate}
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\item Zeige, dass gilt:
+\[
+\frac{1}{2}\int_a^b (x(s)y'(s)-y(s)x'(s)) ds= \int_a^b x(s)y'(s)ds = -\int_a^b y(s)x'(s)ds .
+\]
+\item Zeige weiterhin, dass für die umgekehrte Parametrisierung $\gamma^{-}:[a,b]\rightarrow \R^2, \gamma^-(t)=\gamma(a+b-t)$ gilt ($\gamma^-$ kehrt die Orientierung von $\gamma$ auf $\Gamma$ um, hat also auch das gleiche Bild wie $\gamma$):
+\[
+\int_\gamma (x dy -y dx) = -\int_{\gamma^-} (x dy -y dx)
+\]
+\end{enumerate}
 \end{document}
